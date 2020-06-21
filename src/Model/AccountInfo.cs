@@ -3,9 +3,8 @@ namespace owasp_topten_api.Model
     public class AccountInfo
     {
         public int Id { get; set; }
+        public decimal Balance { get; set; }
 
-        public string Nombre { get; set; }
-
-        public decimal Saldo { get; set; }
+        public string Owner { get; set; }
     }
 }

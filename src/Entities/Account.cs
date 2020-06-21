@@ -4,8 +4,8 @@ namespace owasp_topten_api.Entities
     {
         public int Id { get; set; }
 
-        public decimal Saldo { get; set; }
+        public decimal Balance { get; set; }
 
-        public User Usuario { get; set; }
+        public User User { get; set; }
     }
 }

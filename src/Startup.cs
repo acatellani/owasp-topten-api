@@ -1,19 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 using owasp_topten_api.Entities;
 using owasp_topten_api.Helpers;
+using owasp_topten_api.Model;
 using owasp_topten_api.Services;
+using SharpApiRateLimit;
+using Microsoft.OpenApi.Models;
 
 namespace owasp_topten_api
 {
@@ -32,30 +30,52 @@ namespace owasp_topten_api
 
             services.AddCors();
             services.AddControllers();
+            services.AddRateLimit();
+
 
             // configure basic authentication 
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
+            services.AddEntityFrameworkSqlite()
+                    .AddDbContext<DataContext>(); /*(serviceProvider, options) =>
+                        options.UseSqlite("Data Source=DB/Database.db")
+                               .UseInternalServiceProvider(serviceProvider));*/
+
             // configure DI for application services
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IAppService, AppService>();
-            services.AddEntityFrameworkSqlite().AddDbContext<DataContext>();
+            services.AddScoped<IUserServices, UserServices>();
+            services.AddScoped<IAppServices, AppServices>();
+
+
+            services.AddAutoMapper(typeof(AccountProfile));
+
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "OWasp Top Ten API Test APP", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+           if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-           // global cors policy
+            // global cors policy
             app.UseCors(x => x
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
@@ -67,6 +87,16 @@ namespace owasp_topten_api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
         }
     }
