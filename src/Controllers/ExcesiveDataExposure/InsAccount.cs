@@ -26,9 +26,10 @@ namespace owasp_topten_api.Controllers
         public ActionResult Get(int id)
         {
             var account = appServices.GetAccount(id);
-
+          
             if (account != null)
                 return Ok(account);
+                
             else
                 return BadRequest();
         }

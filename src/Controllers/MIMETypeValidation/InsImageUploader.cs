@@ -17,7 +17,7 @@ namespace owasp_topten_api.Controllers.MIMETypeValidation
 
         private IAppServices appServices;
 
-        public InsAccount(IAppServices appServ)
+        public InsImageUploader(IAppServices appServ)
         {
             appServices = appServ;
         }

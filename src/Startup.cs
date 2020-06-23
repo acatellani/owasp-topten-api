@@ -12,6 +12,9 @@ using owasp_topten_api.Model;
 using owasp_topten_api.Services;
 using SharpApiRateLimit;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace owasp_topten_api
 {
@@ -32,20 +35,53 @@ namespace owasp_topten_api
             services.AddControllers();
             services.AddRateLimit();
 
+            var key = Encoding.ASCII.GetBytes(Configuration["SecretKey"]);
 
             // configure basic authentication 
+            services.AddAuthentication(options => {
+                options.DefaultScheme = "BasicAuthentication";
+            }) 
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null)
+                .AddJwtBearer(x =>
+             {
+                 x.RequireHttpsMetadata = false;
+                 x.SaveToken = true;
+                 x.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateIssuerSigningKey = true,
+                     IssuerSigningKey = new SymmetricSecurityKey(key),
+                     ValidateIssuer = false,
+                     ValidateAudience = false
+                 };
+             });
+/*
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
+            services.AddAuthentication(x =>
+             {
+                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+             })
+             .AddJwtBearer(x =>
+             {
+                 x.RequireHttpsMetadata = false;
+                 x.SaveToken = true;
+                 x.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateIssuerSigningKey = true,
+                     IssuerSigningKey = new SymmetricSecurityKey(key),
+                     ValidateIssuer = false,
+                     ValidateAudience = false
+                 };
+             });
+*/
             services.AddEntityFrameworkSqlite()
-                    .AddDbContext<DataContext>(); /*(serviceProvider, options) =>
-                        options.UseSqlite("Data Source=DB/Database.db")
-                               .UseInternalServiceProvider(serviceProvider));*/
+                    .AddDbContext<DataContext>(); 
 
             // configure DI for application services
             services.AddScoped<IUserServices, UserServices>();
             services.AddScoped<IAppServices, AppServices>();
-
 
             services.AddAutoMapper(typeof(AccountProfile));
 
@@ -59,7 +95,7 @@ namespace owasp_topten_api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-           if (env.IsDevelopment())
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
