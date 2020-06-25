@@ -1,3 +1,4 @@
+using System.Text;
 using System.Security.Claims;
 using System;
 using System.Collections.Generic;
@@ -40,18 +41,33 @@ namespace owasp_topten_api.Controllers.BrokenObjectLevelAuthorization
             }
         }
 
+        [HttpGet("GetBalanceFileBlob/{id}")]
+        public ActionResult GetFileScrambledName(int id)
+        {
+
+            var account = appServices.GetAccount(id);
+
+            if (account != null)
+            {
+                var text = $"Account balance from user { account.User.FirstName} {account.User.LastName } is {account.Balance.ToString("C") } ";
+               
+                return File(Encoding.UTF8.GetBytes(text), "text/plain", $"AccountFromBlob{id}.txt");
+            }
+            else
+                return BadRequest();
+        }
+
         [HttpDelete("{id}")]
         [Authorize(Roles="Admin")] //API5
         public ActionResult Delete(int id)
         {
             var account = appServices.GetAccount(id);
 
-            //COMPLETAR BORRADO FISICO
-
-            if (account != null)
+            //401 - Equiv to Unauthenticate
+            if (account != null && User.FindFirst(ClaimTypes.Name).Value != account.User.Username)
                 return Ok("Account deleted");
             else
-                return BadRequest();
+                return Forbid();
         }
     }
 }

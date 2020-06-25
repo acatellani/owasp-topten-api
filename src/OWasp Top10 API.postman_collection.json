@@ -19,7 +19,7 @@
 							"basic": [
 								{
 									"key": "username",
-									"value": "wwhite",
+									"value": "fkahlo",
 									"type": "string"
 								},
 								{
@@ -41,7 +41,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/bol/SecAccount/GetBalance/1",
+							"raw": "http://localhost:53200/bol/SecAccount/GetBalance/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -51,6 +51,55 @@
 								"bol",
 								"SecAccount",
 								"GetBalance",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/SecAccount/GetBalanceFileBlob",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "fkahlo",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:53200/bol/SecAccount/GetBalanceFileBlob/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53200",
+							"path": [
+								"bol",
+								"SecAccount",
+								"GetBalanceFileBlob",
 								"1"
 							]
 						}
@@ -68,7 +117,7 @@
 							"basic": [
 								{
 									"key": "username",
-									"value": "cnorris",
+									"value": "fkahlo",
 									"type": "string"
 								},
 								{
@@ -90,7 +139,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/bol/InsAccount/GetBalance/1",
+							"raw": "http://localhost:53200/bol/InsAccount/GetBalance/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -100,7 +149,7 @@
 								"bol",
 								"InsAccount",
 								"GetBalance",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -114,7 +163,7 @@
 							"basic": [
 								{
 									"key": "username",
-									"value": "aeinstein",
+									"value": "fkahlo",
 									"type": "string"
 								},
 								{
@@ -159,7 +208,7 @@
 							"basic": [
 								{
 									"key": "username",
-									"value": "wwhite2",
+									"value": "cnorris",
 									"type": "string"
 								},
 								{
@@ -181,7 +230,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/bol/SecAccount/4",
+							"raw": "http://localhost:53200/bol/SecAccount/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -190,7 +239,81 @@
 							"path": [
 								"bol",
 								"SecAccount",
-								"4"
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/bol/InsAccount/GetBalanceFile/2",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "cnorris",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:53200/bol/InsAccount/GetBalanceFile/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53200",
+							"path": [
+								"bol",
+								"InsAccount",
+								"GetBalanceFile",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/bol/InsAccount/GetBalanceFileScrambledName/2",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "cnorris",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:53200/bol/InsAccount/GetBalanceFileScrambledName/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53200",
+							"path": [
+								"bol",
+								"InsAccount",
+								"GetBalanceFileScrambledName",
+								"1"
 							]
 						}
 					},
@@ -558,7 +681,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjMiLCJuYmYiOjE1OTI4NzY2NjEsImV4cCI6MTU5MzQ4MTQ2MSwiaWF0IjoxNTkyODc2NjYxfQ.IrldnGPYoCjmk77ENmBJTg-55cm7CdWLPErK1KDYT5U",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjMiLCJuYmYiOjE1OTI5NDY3NDIsImV4cCI6MTU5MzU1MTU0MiwiaWF0IjoxNTkyOTQ2NzQyfQ.xMAgA1um0CLXRv4Bk6YVgUhtmUxuLDh4yxY7gj2zx4w",
 									"type": "string"
 								}
 							]
@@ -647,12 +770,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:53200/httpcodes/get200ok",
+							"raw": "http://localhost:54200/httpcodes/get200ok",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"httpcodes",
 								"get200ok"

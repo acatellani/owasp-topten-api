@@ -2,6 +2,7 @@ using System.Reflection.Emit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
+using owasp_topten_api.Entities;
 
 namespace owasp_topten_api.Entities
 {
