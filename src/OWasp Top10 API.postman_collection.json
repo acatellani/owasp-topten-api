@@ -14,21 +14,6 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "fkahlo",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "123456",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -208,7 +193,7 @@
 							"basic": [
 								{
 									"key": "username",
-									"value": "cnorris",
+									"value": "fkahlo",
 									"type": "string"
 								},
 								{
@@ -266,7 +251,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:53200/bol/InsAccount/GetBalanceFile/2",
+							"raw": "http://localhost:53200/bol/InsAccount/GetBalanceFile/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -276,7 +261,7 @@
 								"bol",
 								"InsAccount",
 								"GetBalanceFile",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -859,6 +844,235 @@
 							"path": [
 								"httpcodes",
 								"get403Forbidden"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "http://localhost:53200/auth/UserManagement/authenticateBasic",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"cnorris\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:53200/auth/UserManagement/authenticateBasic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53200",
+							"path": [
+								"auth",
+								"UserManagement",
+								"authenticateBasic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/auth/UserManagement/authenticateJwt",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"cnorris\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:53200/auth/UserManagement/authenticateJwt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53200",
+							"path": [
+								"auth",
+								"UserManagement",
+								"authenticateJwt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/auth/UserManagement/getBasic",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "cnorris",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:53200/auth/UserManagement/getBasic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53200",
+							"path": [
+								"auth",
+								"UserManagement",
+								"getBasic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/auth/UserManagement/getBearer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGVuYyNyc2Etb2FlcCIsImVuYyI6IkExMjhDQkMtSFMyNTYiLCJraWQiOiIwMEE3RkVEMDM0NjNBQkYwRDkzNTQyNjg0RTQwNDg3MTg5NEZFNTc4IiwidHlwIjoiSldUIn0.RpuYKW3ew5nkxlolft-Qy9syGhObBDIKiQhHjdAyH0jKF-EQWT8754RgbSjl0AJdOSjvibMaY4oM43tTDfvvsJXzNRzeJONKet0VdEXhnFkGWliAnWl-c45YcEi05qoCQQa2_6VvAFyllBX9Rl1u0XHG6sOiHw8Tv-pF955DZIiQLbdRYbPbL5sKxW8ImAOmRL_3UexQ6ylVD17wdbMrNtx5ECDEstNhpN9LmltNEVup-QRKSI2Pt8pqTY6fSLCjIWGN6KU86KdjwyR8nqgaBEutUtqd5umM6gswYMW_fDJzhuuQSr3mkcki8OV3v8FKhXvog60CcQal9JZh9U64fg.UtxbAq3fW3lEG13ZzCFghg.PYdioLHPXTAYSHuBZcVViozTaG9pT9JJYwM3qKfKmdU9YvaGu30HfFYn_3bICp8xY1sMp04fJJ1uzx7L9PQgjqJEuu-pPlFJmOFEhEWL-rOaHJemVX0b5JKacfQTBSo7nJIhLV1uaW8o8kzRPKd3KXAfbNmtY8bf4jskWx87EYGRFrWH5WXgcex8q1pw99-7OiHuN8fhEzdTe8JNzH3-tcbuRW2DnZhCtQ9O7t3mYQY.6C2ZOLWTLCjcugt8Oy0h3A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:53200/auth/UserManagement/getBearer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53200",
+							"path": [
+								"auth",
+								"UserManagement",
+								"getBearer"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "MimeTypeValidation",
+			"item": [
+				{
+					"name": "http://localhost:53200/mime/InsImageUploader",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "uploadedFile",
+									"type": "file",
+									"src": "/D:/Proyectos/owasp-topten-api/src/TestFiles/SeguInfo.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:53200/mime/InsImageUploader",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53200",
+							"path": [
+								"mime",
+								"InsImageUploader"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/mime/SecImageUploader",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "uploadedFile",
+									"type": "file",
+									"src": "/D:/Proyectos/owasp-topten-api/src/TestFiles/SeguInfo.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:53200/mime/SecImageUploader",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53200",
+							"path": [
+								"mime",
+								"SecImageUploader"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/mime/InsImageUploader/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "uploadedFile",
+									"type": "file",
+									"src": "/D:/Proyectos/owasp-topten-api/src/TestFiles/SeguInfo.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:53200/mime/InsImageUploader",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53200",
+							"path": [
+								"mime",
+								"InsImageUploader"
 							]
 						}
 					},
