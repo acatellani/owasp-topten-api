@@ -9,10 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using owasp_topten_api.Services;
 
-namespace owasp_topten_api.Controllers.BrokenObjectLevelAuthorization
+namespace owasp_topten_api.Controllers.IDOR
 {
     [ApiController]
-    [Route("bol/[controller]")]
+    [Route("idor/[controller]")]
     [Authorize]
     public class SecAccount : ControllerBase
     {
@@ -57,17 +57,5 @@ namespace owasp_topten_api.Controllers.BrokenObjectLevelAuthorization
                 return BadRequest();
         }
 
-        [HttpDelete("{id}")]
-        [Authorize(Roles="Admin")] //API5
-        public ActionResult Delete(int id)
-        {
-            var account = appServices.GetAccount(id);
-
-            //401 - Equiv to Unauthenticate
-           // if (account != null && User.FindFirst(ClaimTypes.Name).Value != account.User.Username)
-                return Ok("Account deleted");
-          // else
-         //       return Forbid();
-        }
     }
 }

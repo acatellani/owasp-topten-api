@@ -10,6 +10,7 @@ namespace src.Controllers
     {
 
         [HttpGet("get200ok")]
+        
         public IActionResult Get200OK()
         {
             return Ok("HttpCode 200 OK");

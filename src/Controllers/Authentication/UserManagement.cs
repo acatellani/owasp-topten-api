@@ -11,7 +11,7 @@ using owasp_topten_api.Services;
 namespace src.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("auth/[controller]")]
     public class UserManagement : ControllerBase
     {
 

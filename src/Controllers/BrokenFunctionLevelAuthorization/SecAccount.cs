@@ -9,10 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using owasp_topten_api.Services;
 
-namespace owasp_topten_api.Controllers.BrokenObjectLevelAuthorization
+namespace owasp_topten_api.Controllers.BrokenFunctionLevelAuthorization
 {
     [ApiController]
-    [Route("bol/[controller]")]
+    [Route("bfl/[controller]")]
     [Authorize]
     public class SecAccount : ControllerBase
     {

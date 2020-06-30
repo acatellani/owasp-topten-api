@@ -1,3 +1,4 @@
+using System.IO;
 using System.Security.Claims;
 using System;
 using System.Collections.Generic;
@@ -8,28 +9,36 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using owasp_topten_api.Services;
 using owasp_topten_api.Entities;
+using Microsoft.AspNetCore.Http;
+using HeyRed.Mime;
 
 namespace owasp_topten_api.Controllers.MIMETypeValidation
 {
     [ApiController]
-    [Route("img/[controller]")]
-    [Authorize]
+    [Route("mime/[controller]")]
     public class SecImageUploader : ControllerBase
     {
 
-        private IAppServices appServices;
-
         public SecImageUploader(IAppServices appServ)
         {
-            appServices = appServ;
         }
 
-        [HttpPost]
-        public ActionResult CreateAccount([FromBody]Account newAccount) {
+        [HttpPost()]
+        public ActionResult Upload(IFormFile uploadedFile)
+        {
 
-            //TODO: COMPLETAR con FileExtensionContentTypeProvider
+            var fileName = ".\\GenFiles\\" + uploadedFile.FileName;
+            using (var stream = System.IO.File.Create(fileName))
+            {
+                uploadedFile.CopyTo(stream);
+            }
 
-            return Ok();
+            var type = HeyRed.Mime.MimeGuesser.GuessFileType(fileName);
+
+            if (!type.MimeType.StartsWith("image"))
+                System.IO.File.Delete(fileName);
+
+            return NoContent();
         }
     }
 }

@@ -11,6 +11,7 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace owasp_topten_api.Services
 {
@@ -64,10 +65,12 @@ namespace owasp_topten_api.Services
                     new Claim(ClaimTypes.Name, user.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                EncryptingCredentials = new X509EncryptingCredentials(new X509Certificate2(".\\Certs\\public.pem"))
             };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+            /*var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);*/
+            return tokenHandler.CreateEncodedJwt(tokenDescriptor);
         }
     }
 }

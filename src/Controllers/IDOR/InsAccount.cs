@@ -11,13 +11,11 @@ using Microsoft.Extensions.Logging;
 using owasp_topten_api.Entities;
 using owasp_topten_api.Services;
 
-namespace owasp_topten_api.Controllers.BrokenObjectLevelAuthorization
+namespace owasp_topten_api.Controllers.IDOR
 {
 
-
-
     [ApiController]
-    [Route("bol/[controller]")]
+    [Route("idor/[controller]")]
 
     public class InsAccount : ControllerBase
     {
@@ -32,8 +30,6 @@ namespace owasp_topten_api.Controllers.BrokenObjectLevelAuthorization
         }
 
         [HttpGet("GetBalance/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult Get(int id)
         {
 
@@ -89,18 +85,5 @@ namespace owasp_topten_api.Controllers.BrokenObjectLevelAuthorization
                 return BadRequest();
         }
 
-        
-
-        [HttpDelete("{id}")]
-        //[Authorize]
-        public ActionResult Delete(int id)
-        {
-            var account = appServices.GetAccount(id);
-
-            if (account != null)
-                return Ok($"Account \"{ account.User.Username }\" deleted - Muy común ver en apis autogeneradas");
-            else
-                return BadRequest();
-        }
     }
 }

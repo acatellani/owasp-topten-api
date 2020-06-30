@@ -1,3 +1,4 @@
+using System;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
@@ -18,6 +19,7 @@ using System.Text;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using System.Security.Cryptography.X509Certificates;
 
 namespace owasp_topten_api
 {
@@ -55,7 +57,8 @@ namespace owasp_topten_api
                      ValidateIssuerSigningKey = true,
                      IssuerSigningKey = new SymmetricSecurityKey(key),
                      ValidateIssuer = false,
-                     ValidateAudience = false
+                     ValidateAudience = false,
+                     TokenDecryptionKey = new X509SecurityKey(new X509Certificate2(".\\Certs\\OwaspCert.pfx", string.Empty))
                  };
              });
 
@@ -72,6 +75,8 @@ namespace owasp_topten_api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OWasp Top Ten API Test APP", Version = "v1" });
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "MyApi.xml");
+                //c.IncludeXmlComments(filePath);
             });
         }
 
