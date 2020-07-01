@@ -54,11 +54,11 @@ namespace owasp_topten_api
                  x.SaveToken = true;
                  x.TokenValidationParameters = new TokenValidationParameters
                  {
-                     ValidateIssuerSigningKey = true,
+                     //ValidateIssuerSigningKey = false,
                      IssuerSigningKey = new SymmetricSecurityKey(key),
                      ValidateIssuer = false,
                      ValidateAudience = false,
-                     TokenDecryptionKey = new X509SecurityKey(new X509Certificate2(".\\Certs\\OwaspCert.pfx", string.Empty))
+                     //TokenDecryptionKey = new X509SecurityKey(new X509Certificate2(".\\Certs\\OwaspCert.pfx", string.Empty))
                  };
              });
 

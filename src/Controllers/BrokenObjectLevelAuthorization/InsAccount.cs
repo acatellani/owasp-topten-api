@@ -32,6 +32,7 @@ namespace owasp_topten_api.Controllers.BrokenObjectLevelAuthorization
         }
 
         [HttpGet("GetBalance/{id}")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult Get(int id)

@@ -42,7 +42,7 @@ namespace owasp_topten_api.Controllers.BrokenFunctionLevelAuthorization
             else
                 return BadRequest();
         }
-
+/*
         [HttpGet("GetBalanceFile/{id}")]
         //[Authorize]
         public ActionResult GetFile(int id)
@@ -87,10 +87,10 @@ namespace owasp_topten_api.Controllers.BrokenFunctionLevelAuthorization
                 return BadRequest();
         }
 
-        
+        */
 
         [HttpDelete("{id}")]
-        //[Authorize]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             var account = appServices.GetAccount(id);

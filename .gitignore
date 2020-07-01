@@ -1,3 +1,4 @@
 ﻿src/bin
 *.db
 src/obj
+src/GenFiles

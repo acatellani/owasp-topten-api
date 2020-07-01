@@ -40,7 +40,7 @@ namespace owasp_topten_api.Controllers.BrokenFunctionLevelAuthorization
                     return Ok(account);
             }
         }
-
+/*
         [HttpGet("GetBalanceFileBlob/{id}")]
         public ActionResult GetFileScrambledName(int id)
         {
@@ -56,7 +56,7 @@ namespace owasp_topten_api.Controllers.BrokenFunctionLevelAuthorization
             else
                 return BadRequest();
         }
-
+*/
         [HttpDelete("{id}")]
         [Authorize(Roles="Admin")] //API5
         public ActionResult Delete(int id)
@@ -64,10 +64,10 @@ namespace owasp_topten_api.Controllers.BrokenFunctionLevelAuthorization
             var account = appServices.GetAccount(id);
 
             //401 - Equiv to Unauthenticate
-           // if (account != null && User.FindFirst(ClaimTypes.Name).Value != account.User.Username)
+            if (account != null && User.FindFirst(ClaimTypes.Name).Value != account.User.Username)
                 return Ok("Account deleted");
-          // else
-         //       return Forbid();
+          else
+                return Forbid();
         }
     }
 }
