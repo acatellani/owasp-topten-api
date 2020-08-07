@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>owasp-topten-api</name>
+    </assembly>
+    <members>
+        <member name="T:src.Controllers.HttpCodesController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:owasp_topten_api.Entities.DataContext.loggerFactory">
+            static LoggerFactory object
+        </member>
+    </members>
+</doc>

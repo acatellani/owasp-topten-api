@@ -1,4 +1,3 @@
-using System.Net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,7 +94,7 @@ namespace owasp_topten_api.Controllers
             {
                 return NotFound();
             }
-           
+
             _context.Accounts.Remove(account);
             await _context.SaveChangesAsync();
 

@@ -20,6 +20,7 @@ using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Security.Cryptography.X509Certificates;
+using System.Reflection;
 
 namespace owasp_topten_api
 {
@@ -54,11 +55,11 @@ namespace owasp_topten_api
                  x.SaveToken = true;
                  x.TokenValidationParameters = new TokenValidationParameters
                  {
-                     //ValidateIssuerSigningKey = false,
+                     ValidateIssuerSigningKey = true, //Firma de JWT
                      IssuerSigningKey = new SymmetricSecurityKey(key),
                      ValidateIssuer = false,
                      ValidateAudience = false,
-                     //TokenDecryptionKey = new X509SecurityKey(new X509Certificate2(".\\Certs\\OwaspCert.pfx", string.Empty))
+                     TokenDecryptionKey = new X509SecurityKey(new X509Certificate2(".\\Certs\\OwaspCert.pfx", string.Empty)) //Cifrado de JWT
                  };
              });
 
@@ -75,8 +76,9 @@ namespace owasp_topten_api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OWasp Top Ten API Test APP", Version = "v1" });
-                var filePath = Path.Combine(System.AppContext.BaseDirectory, "MyApi.xml");
-                //c.IncludeXmlComments(filePath);
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
         }
 

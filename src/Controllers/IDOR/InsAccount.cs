@@ -93,7 +93,8 @@ namespace owasp_topten_api.Controllers.IDOR
             if (account != null)
             {
                 var text = $"Account balance from user { account.User.FirstName} {account.User.LastName } is {account.Balance.ToString("C") } ";
-                var fileName = Path.ChangeExtension(Path.GetRandomFileName(), "txt");
+                //var fileName = Path.ChangeExtension(Path.GetRandomFileName(), "txt");
+                var fileName = Guid.NewGuid().ToString() +  ".txt";
                 
                 using (var stWriter = new StreamWriter(Path.Combine(hostingEnvironment.ContentRootPath, "GenFiles", fileName)))
                 {

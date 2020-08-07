@@ -13,7 +13,7 @@ namespace owasp_topten_api.Controllers.IDOR
 {
     [ApiController]
     [Route("idor/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class SecAccount : ControllerBase
     {
 

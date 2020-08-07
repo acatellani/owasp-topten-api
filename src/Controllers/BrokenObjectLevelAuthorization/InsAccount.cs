@@ -14,8 +14,6 @@ using owasp_topten_api.Services;
 namespace owasp_topten_api.Controllers.BrokenObjectLevelAuthorization
 {
 
-
-
     [ApiController]
     [Route("bol/[controller]")]
 
@@ -32,12 +30,9 @@ namespace owasp_topten_api.Controllers.BrokenObjectLevelAuthorization
         }
 
         [HttpGet("GetBalance/{id}")]
-        [Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        //[Authorize]
         public ActionResult Get(int id)
         {
-
             var account = appServices.GetAccount(id);
 
             if (account != null)
@@ -46,6 +41,7 @@ namespace owasp_topten_api.Controllers.BrokenObjectLevelAuthorization
                 return BadRequest();
         }
 
+/*
         [HttpGet("GetBalanceFile/{id}")]
         //[Authorize]
         public ActionResult GetFile(int id)
@@ -90,7 +86,7 @@ namespace owasp_topten_api.Controllers.BrokenObjectLevelAuthorization
                 return BadRequest();
         }
 
-        
+        */
 
         [HttpDelete("{id}")]
         //[Authorize]

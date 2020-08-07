@@ -63,15 +63,15 @@ namespace owasp_topten_api.Services
                 Subject = new ClaimsIdentity(new Claim[] 
                 {
                     new Claim(ClaimTypes.Name, user.Id.ToString()),
-                    //new Claim(ClaimTypes.Role, user.Role)
+                    new Claim(ClaimTypes.Role, user.Role)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
-               // EncryptingCredentials = new X509EncryptingCredentials(new X509Certificate2(".\\Certs\\public.pem"))
+                EncryptingCredentials = new X509EncryptingCredentials(new X509Certificate2(".\\Certs\\public.pem"))
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
-            //return tokenHandler.CreateEncodedJwt(tokenDescriptor);
+            //return tokenHandler.WriteToken(token); //Generar solamente firmado
+            return tokenHandler.CreateEncodedJwt(tokenDescriptor); //Generar firmado y Cifrado
         }
     }
 }

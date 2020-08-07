@@ -81,5 +81,7 @@ namespace owasp_topten_api.Entities
             });
         }
 
+        public DbSet<owasp_topten_api.Entities.Card> Card { get; set; }
+
     }
 }
