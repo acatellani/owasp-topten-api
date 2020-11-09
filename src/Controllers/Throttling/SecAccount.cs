@@ -29,14 +29,17 @@ namespace owasp_topten_api.Controllers.Throttling
         }
 
         [HttpGet("GetBalance/{id}")]
-        [RateLimitByHeader("X-UserId", "1s", calls: 1)]
+        [RateLimitByHeader("X-UserId", "2s", calls: 5)]
         public ActionResult Get(int id)
         {
-            var account = appServices.GetAccount(id);
+             var account = appServices.GetAccount(id);
 
-            var returnObject = automapper.Map<Account, AccountInfo>(account);
-          
-            return Ok(returnObject);
+            var accountData = automapper.Map<Account, AccountInfo>(account);
+
+            if (account != null)
+                return Ok(accountData);
+            else
+                return BadRequest();
         }
 
     }

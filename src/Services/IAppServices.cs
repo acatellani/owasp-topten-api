@@ -7,5 +7,7 @@ namespace owasp_topten_api.Services
          Account GetAccount(int id);
 
          void CreateAccount(Account account);
+
+         void CreateUser(User user);
     }
 }

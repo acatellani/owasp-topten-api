@@ -25,5 +25,11 @@ namespace owasp_topten_api.Services
 
         }
 
+        public void CreateUser(User user)
+        {
+            dataContext.Users.Add(user);
+            dataContext.SaveChanges();
+        }
+
     }
 }

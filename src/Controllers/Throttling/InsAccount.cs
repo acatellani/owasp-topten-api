@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using owasp_topten_api.Entities;
+using owasp_topten_api.Model;
 using owasp_topten_api.Services;
 
 namespace owasp_topten_api.Controllers.Throttling
@@ -15,11 +17,13 @@ namespace owasp_topten_api.Controllers.Throttling
     public class InsAccount : ControllerBase
     {
 
-        private IAppServices appServices;
+            private IAppServices appServices;
+            private IMapper automapper;
 
-        public InsAccount(IAppServices appServ)
+        public InsAccount(IAppServices appServ, IMapper mapper)
         {
             appServices = appServ;
+            automapper= mapper;
         }
 
         [HttpGet("GetBalance/{id}")]
@@ -27,8 +31,10 @@ namespace owasp_topten_api.Controllers.Throttling
         {
             var account = appServices.GetAccount(id);
 
+            var accountData = automapper.Map<Account, AccountInfo>(account);
+
             if (account != null)
-                return Ok(account);
+                return Ok(accountData);
             else
                 return BadRequest();
         }

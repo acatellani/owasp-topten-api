@@ -21,6 +21,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.Reflection;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace owasp_topten_api
 {
@@ -37,19 +38,23 @@ namespace owasp_topten_api
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddCors();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(opt =>
+            {
+                opt.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+                opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
+
             services.AddRateLimit();
 
             var key = Encoding.ASCII.GetBytes(Configuration["SecretKey"]);
 
-            // configure basic authentication 
+            //Authentication configuration
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = "BasicAuthentication";
             })
-                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null)
-                .AddJwtBearer(x =>
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null) // configure basic authentication 
+                .AddJwtBearer(x => // configure bearer token authentication 
              {
                  x.RequireHttpsMetadata = false;
                  x.SaveToken = true;
@@ -80,17 +85,28 @@ namespace owasp_topten_api
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
+
+
             app.UseStaticFiles(new StaticFileOptions()
             {
                 FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), @"GenFiles")),
+                Path.Combine(Directory.GetCurrentDirectory(), @"GenFiles")),
                 RequestPath = new PathString("/GenFiles")
+            });
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                Path.Combine(Directory.GetCurrentDirectory(), @"Controllers/CORS")),
+                RequestPath = new PathString("/CORS")
             });
 
             app.Use((context, next) =>
@@ -116,11 +132,8 @@ namespace owasp_topten_api
 
             app.UseRouting();
 
-            // global cors policy
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            app.UseCors(builder =>
+                builder.WithOrigins("http://owasp.curso.com:54200").WithMethods("POST").AllowCredentials());
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -139,6 +152,8 @@ namespace owasp_topten_api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
+
+
         }
     }
 }

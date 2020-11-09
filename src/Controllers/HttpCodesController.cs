@@ -1,6 +1,9 @@
+using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using owasp_topten_api.Entities;
+using SharpApiRateLimit;
 
 //https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controllerbase?view=aspnetcore-3.1
 //https://restfulapi.net/http-status-codes/
@@ -13,9 +16,6 @@ namespace src.Controllers
     [Route("[controller]")]
     public class HttpCodesController : ControllerBase
     {
-
-
-
         /// <summary>
         /// Obtener un código 200
         /// </summary>
@@ -26,11 +26,11 @@ namespace src.Controllers
         ///     GET /get200ok
         ///
         /// </remarks>
-        /// <response code="200">Returns operation ended OK</response>
+        /// <response code="200" >Returns operation ended OK</response>
         /// <response code="404">Not found</response>   
         [HttpGet("get200ok")]
         [Produces("application/json")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Account), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get200OK()
         {
@@ -72,6 +72,20 @@ namespace src.Controllers
         public IActionResult GetServerError()
         {
             throw new System.Exception("UGLY SERVER ERROR");
+            
+        }
+
+        [HttpGet("get429Throttling")]
+        [RateLimitByHeader("X-UserId", "1s", calls: 1)]
+        public IActionResult GetThrottling() {
+            return Ok();
+        }
+
+        [HttpGet("getCustomCode")]
+        public IActionResult GetCustomCode() {
+            
+            return StatusCode((int)HttpStatusCode.UnprocessableEntity);
+
         }
     }
 }

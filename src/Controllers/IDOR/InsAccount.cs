@@ -30,7 +30,7 @@ namespace owasp_topten_api.Controllers.IDOR
         }
 
         [HttpGet("GetBalance/{id}")]
-        public ActionResult Get(int id)
+        public ActionResult<Account> Get(int id)
         {
 
             var account = appServices.GetAccount(id);

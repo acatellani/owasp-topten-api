@@ -33,7 +33,8 @@ namespace owasp_topten_api.Entities
 
             modelBuilder.Entity<Account>()
                 .ToTable("Accounts")
-                .HasOne(p => p.User);
+                .HasOne(p => p.User)
+                .WithMany(u => u.Accounts);
 
             modelBuilder.Entity<User>().HasData(new User() {
                 Id= 1,
