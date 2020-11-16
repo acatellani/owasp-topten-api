@@ -11,6 +11,21 @@
 				{
 					"name": "http://localhost:53200/auth/UserManagement/authenticateBasic",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "cnorris",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -23,16 +38,34 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:54200/auth/UserManagement/authenticateBasic",
-							"protocol": "http",
+							"raw": "{{url}}auth/UserManagement/authenticateBasic",
 							"host": [
-								"localhost"
+								"{{url}}auth"
 							],
-							"port": "54200",
 							"path": [
-								"auth",
 								"UserManagement",
 								"authenticateBasic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/auth/UserManagement/getBasic",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}auth/UserManagement/getBasic",
+							"host": [
+								"{{url}}auth"
+							],
+							"path": [
+								"UserManagement",
+								"getBasic"
 							]
 						}
 					},
@@ -53,52 +86,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:54200/auth/UserManagement/authenticateJwt",
-							"protocol": "http",
+							"raw": "{{url}}auth/UserManagement/authenticateJwt",
 							"host": [
-								"localhost"
+								"{{url}}auth"
 							],
-							"port": "54200",
 							"path": [
-								"auth",
 								"UserManagement",
 								"authenticateJwt"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:53200/auth/UserManagement/getBasic",
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "cnorris2",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "123456",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:54200/auth/UserManagement/getBasic",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "54200",
-							"path": [
-								"auth",
-								"UserManagement",
-								"getBasic"
 							]
 						}
 					},
@@ -112,7 +106,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGVuYyNyc2Etb2FlcCIsImVuYyI6IkExMjhDQkMtSFMyNTYiLCJraWQiOiIyRjZEMkIyQTlFN0U2OERFQUZBMDBFQzNCOEVFQTdGMEUzN0FCN0U1IiwidHlwIjoiSldUIn0.d_EG0yGH2b2Mi2kj2qYpzvl6wRA5vfKoLD4n2SwYqwuaDW-GqmiVwZ7SYjssodTJUCI5JsbIwNVRMpyevRRfeikkjQB3mUwApkhFNeP0x6vniuvTUEIhPWYdtLHB7kcTjudDvz-UEcBDqi9kRnZwUXSBVhGTRsuoxdoLIYk4TlscZyJsvmFDjVCgHmv3A6vLc5ac_SvL0DoRC2s9cTPsrEXKOj0RZRtLxtXGDbm9SxWKi4Ekwjf6pzUNpi-lB4dLj3dX_8565zxRNwFZVnvuqBOzLFu5Rh598qP9_nnF7XXNKlKx2hy-BjDGlFaiz9ac6QRURm2hr_GtYk-Qr3bx5w.kgW5mqJv9E9pX9HPzRYKyA.G_71E0wT71H3T-ap1UjdEp9sriYewPxPCgKl-PBB6mYBSQeyVEc6pflDoyJb9wN3471uCVBmUtk6Ex6y_ddq-3vPSKAWuzTOG8mjdTGobrBoc1dtKbU9-syQb7uir58ZGAIxAUO2pa-kuZvaCFPlaou4rkKxqhlADvHOO9BPe97TQQi8Ca3kkdj8H7VmkK5UzGdBPlqIo0zeoM6xwjSXBwg-It3A5vjzt2gSb04GXmAJraRAp770CSvhmnvGH6jC_w82FPjdC91PXTu9jb98HA.DBuCYH6rEUQhijiNAn6bcw",
+									"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGVuYyNyc2Etb2FlcCIsImVuYyI6IkExMjhDQkMtSFMyNTYiLCJraWQiOiIzQTM0QkQ4NDJCMEQ5M0M2NDEzNzRFMjU1NTU2NzkwQ0E0QTIyNzlBIiwidHlwIjoiSldUIn0.WUGQmznntkji5MNOaJ0DKK69iO4mSlXuxejkPlzLgYKCOjfeQVbM5Cg1O9BDDsw0a_3y9SQfEf7FhsYeAYTZx5o11STJ-QPVsa0Y5i2v3oWSpnFN2Y3gVbLKpf5YFu20s6ASw994EpU9tNpzy9QVmQt_JUtuGq-c5nVGuUWsahUo59vO5NZrJChW7YZ9ozGhFrB8Ern2RYxSWhDL4elBE9cGuBUf1CX6JMBgjQ3HHChK2_4tAEVtoKHnhxzw0jhgbEVtAtXZbd4fE8CldvYKm4DmcyP4iZfRoc0pYS46yqOnalU7KgcWAWgeWGoXZRQ9jBatE2U-Lg61mJUCAKP6bg.kWd3VFfeKxlsmBvnRrzYyA.VcRLUMbHAqAVZALtJAOCDTvbULmvrhmGNfWgiAvufVzNXZgVoiC5rmb5xDfRKrURpPKRJgB2lmgJSVe9p0Hm7TCizvcAcGeQg-y_6VMb11hn33JDL8DTwrhtK-rbImBRJMG_bm4oh0CsC4V-P6b0pU-rKLIbNN2xkglMtRPMvfO0HG3OR1id7LFtmUq19b8zZlo0IKGoKmZEgwyQ0xwy_cZdYNPzdT0-X9tznBoOA7WHIL6mWKJ49nUJM-OxaQptYXeCBnRzdkJW7v8jElIg0g.2TI7txFeb8Vzu6_HTdZ8QQ",
 									"type": "string"
 								}
 							]
@@ -120,14 +114,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:54200/auth/UserManagement/getBearer",
-							"protocol": "http",
+							"raw": "{{url}}auth/UserManagement/getBearer",
 							"host": [
-								"localhost"
+								"{{url}}auth"
 							],
-							"port": "54200",
 							"path": [
-								"auth",
 								"UserManagement",
 								"getBearer"
 							]
@@ -337,55 +328,6 @@
 			"name": "ExcessiveDataExposure",
 			"item": [
 				{
-					"name": "http://localhost:53200/ede/SecAccount/GetBalance/1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "123456",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "cnorris",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n      \"PNR\": \"9875-4581-234\"\r\n  }",
-							"options": {
-								"raw": {
-									"language": "text"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:53200/ede/SecAccount/GetBalance/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "53200",
-							"path": [
-								"ede",
-								"SecAccount",
-								"GetBalance",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "http://localhost:53200/ede/InsAccount/GetBalance/1",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -418,17 +360,60 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/ede/insAccount/GetBalance/2",
-							"protocol": "http",
+							"raw": "{{url}}ede/insAccount/GetBalance/2",
 							"host": [
-								"localhost"
+								"{{url}}ede"
 							],
-							"port": "53200",
 							"path": [
-								"ede",
 								"insAccount",
 								"GetBalance",
 								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/ede/SecAccount/GetBalance/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "cnorris",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"PNR\": \"9875-4581-234\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}ede/SecAccount/GetBalance/1",
+							"host": [
+								"{{url}}ede"
+							],
+							"path": [
+								"SecAccount",
+								"GetBalance",
+								"1"
 							]
 						}
 					},
@@ -476,13 +461,13 @@
 			"name": "Code Injection",
 			"item": [
 				{
-					"name": "Injection #1",
+					"name": "Llamada normal (copia de archivo)",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"originFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile.txt\",\r\n    \"destFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile2.txt&&calc.exe\"\r\n}",
+							"raw": "{\r\n    \"originFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile.txt\",\r\n    \"destFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile2.txt\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -506,13 +491,13 @@
 					"response": []
 				},
 				{
-					"name": "Llamada normal (copia de archivo)",
+					"name": "Injection #1",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"originFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile.txt\",\r\n    \"destFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile2.txt\"\r\n}",
+							"raw": "{\r\n    \"originFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile.txt\",\r\n    \"destFile\": \"d:\\\\Downloads\\\\owasp\\\\testfile2.txt&&calc.exe\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -621,14 +606,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:54200/idor/InsAccount/GetBalanceFile/1",
-							"protocol": "http",
+							"raw": "{{url}}idor/InsAccount/GetBalanceFile/1",
 							"host": [
-								"localhost"
+								"{{url}}idor"
 							],
-							"port": "54200",
 							"path": [
-								"idor",
 								"InsAccount",
 								"GetBalanceFile",
 								"1"
@@ -658,17 +640,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:54200/idor/InsAccount/GetBalanceFileAuth/3",
-							"protocol": "http",
+							"raw": "{{url}}idor/InsAccount/GetBalanceFileAuth/1",
 							"host": [
-								"localhost"
+								"{{url}}idor"
 							],
-							"port": "54200",
 							"path": [
-								"idor",
 								"InsAccount",
 								"GetBalanceFileAuth",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -695,17 +674,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:54200/idor/InsAccount/GetBalanceFileScrambledName/3",
-							"protocol": "http",
+							"raw": "{{url}}idor/InsAccount/GetBalanceFileScrambledName/2",
 							"host": [
-								"localhost"
+								"{{url}}idor"
 							],
-							"port": "54200",
 							"path": [
-								"idor",
 								"InsAccount",
 								"GetBalanceFileScrambledName",
-								"3"
+								"2"
 							]
 						}
 					},
@@ -744,14 +720,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:54200/idor/SecAccount/GetBalanceFileBlob/1",
-							"protocol": "http",
+							"raw": "{{url}}idor/SecAccount/GetBalanceFileBlob/1",
 							"host": [
-								"localhost"
+								"{{url}}idor"
 							],
-							"port": "54200",
 							"path": [
-								"idor",
 								"SecAccount",
 								"GetBalanceFileBlob",
 								"1"
@@ -772,14 +745,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:53200/httpcodes/get401Unauthorized",
-							"protocol": "http",
+							"raw": "{{url}}httpcodes/get401Unauthorized",
 							"host": [
-								"localhost"
+								"{{url}}httpcodes"
 							],
-							"port": "53200",
 							"path": [
-								"httpcodes",
 								"get401Unauthorized"
 							]
 						}
@@ -790,17 +760,66 @@
 					"name": "http://localhost:53200/httpcodes/get200ok",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Access-Control-Allow-Origin",
+								"value": "http://owasp.curso.com:54200",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:53200/httpcodes/get200ok",
-							"protocol": "http",
+							"raw": "{{url}}httpcodes/get200ok",
 							"host": [
-								"localhost"
+								"{{url}}httpcodes"
 							],
-							"port": "53200",
 							"path": [
-								"httpcodes",
 								"get200ok"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/httpcodes/get429Throttling",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Access-Control-Allow-Origin",
+								"type": "text",
+								"value": "http://owasp.curso.com:54200"
+							}
+						],
+						"url": {
+							"raw": "{{url}}httpcodes/get429Throttling",
+							"host": [
+								"{{url}}httpcodes"
+							],
+							"path": [
+								"get429Throttling"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/httpcodes/getCustomCode",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Access-Control-Allow-Origin",
+								"type": "text",
+								"value": "http://owasp.curso.com:54200"
+							}
+						],
+						"url": {
+							"raw": "{{url}}httpcodes/getCustomCode",
+							"host": [
+								"{{url}}httpcodes"
+							],
+							"path": [
+								"getCustomCode"
 							]
 						}
 					},
@@ -812,14 +831,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:53200/httpcodes/get201Created",
-							"protocol": "http",
+							"raw": "{{url}}httpcodes/get201Created",
 							"host": [
-								"localhost"
+								"{{url}}httpcodes"
 							],
-							"port": "53200",
 							"path": [
-								"httpcodes",
 								"get201Created"
 							]
 						}
@@ -832,14 +848,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:54200/httpcodes/get500ServerError",
-							"protocol": "http",
+							"raw": "{{url}}httpcodes/get500ServerError",
 							"host": [
-								"localhost"
+								"{{url}}httpcodes"
 							],
-							"port": "54200",
 							"path": [
-								"httpcodes",
 								"get500ServerError"
 							]
 						}
@@ -852,14 +865,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:53200/httpcodes/get204NoContent",
-							"protocol": "http",
+							"raw": "{{url}}httpcodes/get204NoContent",
 							"host": [
-								"localhost"
+								"{{url}}httpcodes"
 							],
-							"port": "53200",
 							"path": [
-								"httpcodes",
 								"get204NoContent"
 							]
 						}
@@ -872,14 +882,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:53200/httpcodes/get302redirect",
-							"protocol": "http",
+							"raw": "{{url}}httpcodes/get302redirect",
 							"host": [
-								"localhost"
+								"{{url}}httpcodes"
 							],
-							"port": "53200",
 							"path": [
-								"httpcodes",
 								"get302redirect"
 							]
 						}
@@ -892,14 +899,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:53200/httpcodes/get403Forbidden",
-							"protocol": "http",
+							"raw": "{{url}}httpcodes/get403Forbidden",
 							"host": [
-								"localhost"
+								"{{url}}httpcodes"
 							],
-							"port": "53200",
 							"path": [
-								"httpcodes",
 								"get403Forbidden"
 							]
 						}
@@ -923,7 +927,7 @@
 								{
 									"key": "uploadedFile",
 									"type": "file",
-									"src": "/D:/Proyectos/owasp-topten-api/src/TestFiles/SeguInfo.png"
+									"src": "/D:/Proyectos/owasp-topten-api/src/TestFiles/SeguInfo.exe"
 								}
 							],
 							"options": {
@@ -931,48 +935,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:53200/mime/InsImageUploader",
-							"protocol": "http",
+							"raw": "{{url}}mime/InsImageUploader",
 							"host": [
-								"localhost"
+								"{{url}}mime"
 							],
-							"port": "53200",
 							"path": [
-								"mime",
 								"InsImageUploader"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:53200/mime/SecImageUploader VALIDA MTYPE",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "uploadedFile",
-									"type": "file",
-									"src": "/D:/Proyectos/owasp-topten-api/src/TestFiles/SeguInfo.jpg"
-								}
-							],
-							"options": {
-								"formdata": {}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:54200/mime/SecImageUploader",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "54200",
-							"path": [
-								"mime",
-								"SecImageUploader"
 							]
 						}
 					},
@@ -997,16 +965,43 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:54200/mime/InsImageUploader/CheckExtension",
-							"protocol": "http",
+							"raw": "{{url}}mime/InsImageUploader/CheckExtension",
 							"host": [
-								"localhost"
+								"{{url}}mime"
 							],
-							"port": "54200",
 							"path": [
-								"mime",
 								"InsImageUploader",
 								"CheckExtension"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:53200/mime/SecImageUploader VALIDA MTYPE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "uploadedFile",
+									"type": "file",
+									"src": "/D:/Proyectos/owasp-topten-api/src/TestFiles/SeguInfo.jpg"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "{{url}}mime/SecImageUploader",
+							"host": [
+								"{{url}}mime"
+							],
+							"path": [
+								"SecImageUploader"
 							]
 						}
 					},
@@ -1020,30 +1015,15 @@
 			"item": [
 				{
 					"name": "Sin Throttling Control",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"originFile\": \"d:\\\\Temp\\\\textfile.txt\",\r\n    \"destFile\": \"d:\\\\Temp\\\\textfile2.txt\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:53200/thr/InsAccount/GetBalance/1",
-							"protocol": "http",
+							"raw": "{{url}}thr/InsAccount/GetBalance/1",
 							"host": [
-								"localhost"
+								"{{url}}thr"
 							],
-							"port": "53200",
 							"path": [
-								"thr",
 								"InsAccount",
 								"GetBalance",
 								"1"
@@ -1054,9 +1034,6 @@
 				},
 				{
 					"name": "Con Throttling Control",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1066,9 +1043,37 @@
 								"type": "text"
 							}
 						],
+						"url": {
+							"raw": "{{url}}thr/SecAccount/GetBalance/1",
+							"host": [
+								"{{url}}thr"
+							],
+							"path": [
+								"SecAccount",
+								"GetBalance",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CORS",
+			"item": [
+				{
+					"name": "CORS Test (desde Postman,CORS no tiene efecto alguno)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"originFile\": \"d:\\\\Temp\\\\testfile.txt\",\r\n    \"destFile\": \"d:\\\\Temp\\\\testfile2.txt*&&shutdown /s /t 36000\"\r\n}",
+							"raw": "{\r\n    \"balance\": 3000,\r\n    \"user\": {\r\n        \"username\": \"wwhite2\",\r\n        \"password\": \"123456\",\r\n        \"role\": \"Admin\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1076,17 +1081,159 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:54200/thr/SecAccount/GetBalance/1",
+							"raw": "http://cors.curso.com:54200/cors/test",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"cors",
+								"curso",
+								"com"
 							],
 							"port": "54200",
 							"path": [
-								"thr",
-								"SecAccount",
-								"GetBalance",
-								"1"
+								"cors",
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "MassAssignment",
+			"item": [
+				{
+					"name": "MassAssignment-Create Simple User (Insecure)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FirstName\": \"Emmet\",\r\n    \"LastName\": \"Brown\",\r\n    \"Username\": \"ebrown\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}MassAssignment/InsUser",
+							"host": [
+								"{{url}}MassAssignment"
+							],
+							"path": [
+								"InsUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MassAssignment-Create Admin User via MA (Insecure)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FirstName\": \"Clara\",\r\n    \"LastName\": \"Clayton\",\r\n    \"Username\": \"cclayton\",\r\n    \"Password\": \"123456\",\r\n    \"Role\": \"Admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}MassAssignment/InsUser",
+							"host": [
+								"{{url}}MassAssignment"
+							],
+							"path": [
+								"InsUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MassAssignment-Create Admin User and Account! via MA (Insecure)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FirstName\": \"Biff\",\r\n    \"LastName\": \"Tannen\",\r\n    \"Username\": \"btannen\",\r\n    \"Role\": \"Admin\",\r\n    \"Password\": \"654321\",\r\n    \"Accounts\": [{\r\n        \"Balance\": 450000\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}MassAssignment/InsUser",
+							"host": [
+								"{{url}}MassAssignment"
+							],
+							"path": [
+								"InsUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MassAssignment-Create Admin User and Account! via MA (Insecure) Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FirstName\": \"Biff\",\r\n    \"LastName\": \"Tannen\",\r\n    \"Username\": \"btannen\",\r\n    \"Role\": \"Admin\",\r\n    \"Password\": \"654321\",\r\n    \"Accounts\": {\r\n        \"Balance\": 450000\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}MassAssignment/SecUser",
+							"host": [
+								"{{url}}MassAssignment"
+							],
+							"path": [
+								"SecUser"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Logs",
+			"item": [
+				{
+					"name": "Prueba de Get con logs.",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}logs/log?value=Hola Mundo",
+							"host": [
+								"{{url}}logs"
+							],
+							"path": [
+								"log"
+							],
+							"query": [
+								{
+									"key": "value",
+									"value": "Hola Mundo"
+								}
 							]
 						}
 					},
